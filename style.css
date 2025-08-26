@@ -1,0 +1,27 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 40px;
+}
+
+#gameArea {
+  width: 400px;
+  height: 400px;
+  border: 2px solid black;
+  margin: 20px auto;
+  position: relative;
+  background: #f0f0f0;
+}
+
+#square {
+  width: 50px;
+  height: 50px;
+  background: blue;
+  position: absolute;
+  cursor: pointer;
+}
+
+#message {
+  font-size: 20px;
+  margin-top: 15px;
+}
