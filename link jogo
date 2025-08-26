@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Clique no Quadrado</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 40px;
+    }
+    #gameArea {
+      width: 400px;
+      height: 400px;
+      border: 2px solid black;
+      margin: 20px auto;
+      position: relative;
+      background: #f0f0f0;
+    }
+    #square {
+      width: 50px;
+      height: 50px;
+      background: blue;
+      position: absolute;
+      cursor: pointer;
+    }
+    #message {
+      font-size: 20px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Clique no Quadrado</h1>
+  <p>Objetivo: clique no quadrado azul 10 vezes para vencer!</p>
+  <div id="gameArea">
+    <div id="square"></div>
+  </div>
+  <p id="score">Cliques: 0</p>
+  <p id="message"></p>
+
+  <script>
+    const square = document.getElementById("square");
+    const gameArea = document.getElementById("gameArea");
+    const scoreDisplay = document.getElementById("score");
+    const message = document.getElementById("message");
+
+    let score = 0;
+    const goal = 10;
+
+    // Função para reposicionar o quadrado
+    function moveSquare() {
+      const areaWidth = gameArea.clientWidth;
+      const areaHeight = gameArea.clientHeight;
+      const squareSize = square.clientWidth;
+
+      const randomX = Math.floor(Math.random() * (areaWidth - squareSize));
+      const randomY = Math.floor(Math.random() * (areaHeight - squareSize));
+
+      square.style.left = randomX + "px";
+      square.style.top = randomY + "px";
+    }
+
+    // Quando o jogador clica no quadrado
+    square.addEventListener("click", () => {
+      score++;
+      scoreDisplay.textContent = "Cliques: " + score;
+
+      if (score >= goal) {
+        message.textContent = "🎉 Você venceu!";
+        square.style.display = "none";
+      } else {
+        moveSquare();
+      }
+    });
+
+    // Inicia posição
+    moveSquare();
+  </script>
+</body>
+</html>
